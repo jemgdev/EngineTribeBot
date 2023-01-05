@@ -32,7 +32,8 @@ async def command_help(message: discord.Message):
                 '`e!consulta` : Consultar un nivel.\n' \
                 '`e!azar` : Nivel aleatorio.\n' \
                 '`e!estats` : Estadísticas de publicación.\n' \
-                '`e!server` : Estadísticas del servidor.'
+                '`e!server` : Estadísticas del servidor.\n' \
+                '`e!sex` : Habilita los privilegios de booster en EngineTribe.'
     if message.author.id in BOT_ADMIN:
         retval_es += '\n📑 Comandos de administrador disponibles:\n' \
                      '`e!permiso` : Permiso de actualización.'
