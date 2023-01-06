@@ -232,7 +232,7 @@ async def command_query(message: discord.Message, locale):
                 else:
                     retval += '\n'
                 retval += f'⏰ {level_data["date"]}\n' \
-                          f'level_data["likes"]❤  level_data["dislikes"]💙\n'
+                          f'{level_data["likes"]}👍  {level_data["dislikes"]}👎\n'
                 clears = level_data['victorias']
                 plays = level_data['intentos']
                 deaths = level_data['muertes']
@@ -270,7 +270,7 @@ async def command_random(message: discord.Message, locale):
             else:
                 retval += '\n'
             retval += f'⏰ {level_data["date"]}\n' \
-                      f'level_data["likes"]❤  level_data["dislikes"]💙\n'
+                      f'{level_data["likes"]}👍  {level_data["dislikes"]}👎\n'
             clears = level_data['victorias']
             plays = level_data['intentos']
             deaths = level_data['muertes']
