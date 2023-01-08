@@ -58,9 +58,9 @@ async def on_message(message: discord.Message):
         await command_error(message=message)
         return
         
-def check_rol(roles: list[discord.Role], rol_id: int):
+def check_rol(roles: list[discord.Role], role_id: int):
     for role in roles: 
-            if role.id == rol_id:
+            if role.id == role_id:
                 has_role = True
                 break
             else:
@@ -70,11 +70,11 @@ def check_rol(roles: list[discord.Role], rol_id: int):
 @client.event
 async def on_member_update(before: discord.Member, after: discord.Member):
 
-    has_boost_rol = check_rol(roles=after.roles, rol_id=BOOST_ROL_ID)
-    has_stage_mod_rol = check_rol(roles=after.roles, rol_id=STAGE_MOD_ROL_ID)
+    has_boost_role = check_rol(roles=after.roles, role_id=BOOST_ROLE_ID)
+    has_stage_mod_role = check_rol(roles=after.roles, role_id=STAGE_MOD_ROLE_ID)
     user_id = after.id
-    await command_verify_boost(user_id=user_id, has_rol=has_boost_rol)
-    await command_verify_stage_mod(user_id=user_id, has_rol=has_stage_mod_rol)
-
+    await command_verify_boost(user_id=user_id, has_role=has_boost_role)
+    await command_verify_stage_mod(user_id=user_id, has_role=has_stage_mod_role)
+    
 
 client.run(BOT_TOKEN)
