@@ -52,8 +52,6 @@ async def on_message(message: discord.Message):
         await command_random(message=message, locale=ES)
     elif message.content.startswith('e!server'):  # server stats
         await command_server(message=message)
-    elif message.content.startswith('e!sex'):  # server stats
-        await command_verify_boost(message=message)
     else:
         await command_error(message=message)
         return
