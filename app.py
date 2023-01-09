@@ -1,7 +1,9 @@
 import discord
 from config import *
 from locales import EN, ES
-from engine_bot import command_register, command_help, command_ban, command_query, command_stats, command_unban, command_permission, command_random, command_server, command_error, command_verify_boost, command_verify_stage_mod
+from engine_bot import command_register, command_help, command_ban, command_query, command_stats, command_unban, \
+    command_permission, command_random, command_server, command_error, set_boost, set_stage_mod
+
 # import logging
 
 intents = discord.Intents.default()
@@ -10,9 +12,11 @@ intents.members = True
 
 client = discord.Client(intents=intents)
 
+
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
+
 
 @client.event
 async def on_message(message: discord.Message):
@@ -55,24 +59,23 @@ async def on_message(message: discord.Message):
     else:
         await command_error(message=message)
         return
-        
-def check_rol(roles: list[discord.Role], role_id: int):
-    for role in roles: 
-            if role.id == role_id:
-                has_role = True
-                break
-            else:
-                has_role = False
-    return has_role
+
+
+def check_role(roles: list[discord.Role], role_id: int):
+    for role in roles:
+        if role.id == role_id:
+            return True
+    return False
+
+
 
 @client.event
 async def on_member_update(before: discord.Member, after: discord.Member):
-
-    has_boost_role = check_rol(roles=after.roles, role_id=BOOST_ROLE_ID)
-    has_stage_mod_role = check_rol(roles=after.roles, role_id=STAGE_MOD_ROLE_ID)
+    has_boost_role = check_role(roles=after.roles, role_id=BOOST_ROLE_ID)
+    has_stage_mod_role = check_role(roles=after.roles, role_id=STAGE_MOD_ROLE_ID)
     user_id = after.id
-    await command_verify_boost(user_id=user_id, has_role=has_boost_role)
-    await command_verify_stage_mod(user_id=user_id, has_role=has_stage_mod_role)
-    
+    await set_boost(user_id=user_id, has_role=has_boost_role)
+    await set_stage_mod(user_id=user_id, has_role=has_stage_mod_role)
+
 
 client.run(BOT_TOKEN)

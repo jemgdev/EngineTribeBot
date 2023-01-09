@@ -362,15 +362,20 @@ async def command_error(message: discord.Message):
                         'Verifique el comando en busca de **errores tipográficos** y verifique el **mensaje anclado**.')
     return
 
-async def command_verify_boost(user_id, has_role):
-    async with aiohttp.request(method='PUT', url=ENGINE_TRIBE_HOST + '/user/boost', 
-    json={ 'user_id': user_id, 'has_role': has_role }) as response:
+
+async def set_boost(user_id, has_role):
+    async with aiohttp.request(method='POST', url=ENGINE_TRIBE_HOST + '/user/update_permission',
+                               json={'permission': 'booster', 'user_id': user_id, 'value': has_role,
+                                     'api_key': ENGINE_TRIBE_API_KEY}) as response:
         response_json = await response.json()
-        
-async def command_verify_stage_mod(user_id, has_role):
-    async with aiohttp.request(method='PUT', url=ENGINE_TRIBE_HOST + '/user/stage', 
-    json={ 'user_id': user_id, 'has_role': has_role }) as response:
+
+
+async def set_stage_mod(user_id, has_role):
+    async with aiohttp.request(method='POST', url=ENGINE_TRIBE_HOST + '/user/update_permission',
+                               json={'permission': 'mod', 'user_id': user_id, 'value': has_role,
+                                     'api_key': ENGINE_TRIBE_API_KEY}) as response:
         response_json = await response.json()
+
 
 def prettify_level_id(level_id: str):
     return level_id[0:4] + '-' + level_id[4:8] + '-' + level_id[8:12] + '-' + level_id[12:16]
