@@ -363,16 +363,16 @@ async def command_error(message: discord.Message):
     return
 
 
-async def set_boost(user_id, has_role):
+async def set_boost(user_id, has_role: bool):
     async with aiohttp.request(method='POST', url=ENGINE_TRIBE_HOST + '/user/update_permission',
-                               json={'permission': 'booster', 'user_id': user_id, 'value': has_role,
+                               json={'permission': 'booster', 'user_id': str(user_id), 'value': has_role,
                                      'api_key': ENGINE_TRIBE_API_KEY}) as response:
         pass
 
 
-async def set_stage_mod(user_id, has_role):
+async def set_stage_mod(user_id, has_role: bool):
     async with aiohttp.request(method='POST', url=ENGINE_TRIBE_HOST + '/user/update_permission',
-                               json={'permission': 'mod', 'user_id': user_id, 'value': has_role,
+                               json={'permission': 'mod', 'user_id': str(user_id), 'value': has_role,
                                      'api_key': ENGINE_TRIBE_API_KEY}) as response:
         pass
 
