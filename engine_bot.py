@@ -238,7 +238,7 @@ async def command_query(message: discord.Message, locale):
                     retval += f'{clears}{locale.QUERY_CLEARS} / {plays}{locale.QUERY_PLAYS}\n'
                 else:
                     retval += f'{clears}{locale.QUERY_CLEARS} / {plays}{locale.QUERY_PLAYS}  ' \
-                              f'{round((int(clears) / int(deaths)) * 100, 2)}%\n'
+                              f'{round((int(clears) / int(plays)) * 100, 2)}%\n'
                 retval += f'> {locale.QUERY_TAGS}{level_data["etiquetas"]}' \
                           f'{locale.QUERY_STYLE}{styles[int(level_data["apariencia"])]}'
                 await message.reply(retval)
@@ -275,7 +275,7 @@ async def command_random(message: discord.Message, locale):
                 retval += f'> {clears}{locale.QUERY_CLEARS} / {plays}{locale.QUERY_PLAYS}\n'
             else:
                 retval += f'> {clears}{locale.QUERY_CLEARS} / {plays}{locale.QUERY_PLAYS}  ' \
-                          f'{round((int(clears) / int(deaths)) * 100, 2)}%\n'
+                          f'{round((int(clears) / int(plays)) * 100, 2)}%\n'
             retval += f'> {locale.QUERY_TAGS}{level_data["etiquetas"]}' \
                       f'{locale.QUERY_STYLE}{styles[int(level_data["apariencia"])]}'
             await message.reply(retval)
