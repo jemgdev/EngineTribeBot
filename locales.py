@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class EN:
-    BOT_AUTH_CODE = 'EngineBot|PC|EN'  # fake SMM_WE client auth_code
+    BOT_AUTH_CODE = '0|PC|EN'  # fake SMM_WE client auth_code
     REGISTER_COMMAND = 'e!register'
     REGISTER_HINT = '🔗 Open https://web.enginetribe.gq/register.html to register, or open ' \
                     'https://web.enginetribe.gq/change_password.html to change password. \nUsage: `e!register ' \
@@ -48,7 +48,7 @@ class EN:
 
 @dataclass
 class ES:
-    BOT_AUTH_CODE = 'EngineBot|PC|ES'  # fake SMM_WE client auth_code
+    BOT_AUTH_CODE = '0|PC|ES'  # fake SMM_WE client auth_code
     REGISTER_COMMAND = 'e!registrar'
     REGISTER_HINT = '🔗 Abra https://web.enginetribe.gq/register.html para registrarse o abra ' \
                     'https://web.enginetribe.gq/change_password.html para cambiar la contraseña. \nUso: `e!registrar ' \
